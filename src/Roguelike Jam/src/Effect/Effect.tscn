@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Effect/Effect.gd" type="Script" id=2]
+
+[node name="Effect" type="AnimatedSprite"]
+script = ExtResource( 2 )
+[connection signal="animation_finished" from="." to="." method="_on_Effect_animation_finished"]
