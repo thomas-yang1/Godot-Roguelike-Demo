@@ -17,7 +17,10 @@ func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		_state_machine.transition_to("Attack")
 	
+	elif event.is_action_pressed("hook") and owner.can_hook:
+		_state_machine.transition_to("Hook")
 	
+
 # warning-ignore:unused_argument
 func physics_process(delta: float) -> void:
 	velocity = calculate_velocity(velocity, get_move_direction())
@@ -26,6 +29,7 @@ func physics_process(delta: float) -> void:
 	
 	if velocity.length_squared() != 0:
 		Events.emit_signal("player_moved", owner)
+
 
 	if owner.get_slide_count() >0:
 		_state_machine.transition_to("Push")
@@ -39,7 +43,8 @@ func enter(msg: Dictionary = {}) -> void:
 	
 func exit() -> void:
 	# disconnect states via owner
-	pass
+	velocity = Vector2.ZERO
+#	pass
 	
 
 func calculate_velocity(old_velocity: Vector2, get_move_direction: Vector2) -> Vector2:

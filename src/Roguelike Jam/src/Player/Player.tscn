@@ -2,7 +2,7 @@
 
 [ext_resource path="res://asset/Action RPG Resources/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://src/Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://src/Player/Collision/Hook.gd" type="Script" id=3]
+[ext_resource path="res://src/Player/States/Hook.gd" type="Script" id=3]
 [ext_resource path="res://src/Player/Collision/Melee.gd" type="Script" id=4]
 [ext_resource path="res://src/Collisions/Hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Player/States/Run.gd" type="Script" id=6]
@@ -11,14 +11,16 @@
 [ext_resource path="res://src/Player/States/Idle.gd" type="Script" id=9]
 [ext_resource path="res://src/Player/States/Attack.gd" type="Script" id=10]
 [ext_resource path="res://src/Player/States/Push.gd" type="Script" id=11]
+[ext_resource path="res://asset/audio/Sword_Sound.wav" type="AudioStream" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 4.72227
-height = 3.77727
+radius = 6.21532
+height = 5.67489
 
 [sub_resource type="Animation" id=2]
 resource_name = "AttackDown"
-length = 0.4
+length = 0.18
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -26,7 +28,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 36, 37, 38, 39 ]
@@ -38,7 +40,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
+"times": PoolRealArray( 0.1, 0.17 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -50,17 +52,32 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.17 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_on_Attack_animation_finished"
 } ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0.01 )
 }
 
 [sub_resource type="Animation" id=3]
 resource_name = "AttackLeft"
-length = 0.4
+length = 0.18
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -68,55 +85,56 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 32, 33, 34, 35 ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitboxPivot/Melee/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
+"times": PoolRealArray( 0.04, 0.17 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot/Melee/CollisionShape2D:disabled")
+tracks/2/type = "method"
+tracks/2/path = NodePath("StateMachine/Attack")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath("StateMachine/Attack")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.17 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_on_Attack_animation_finished"
 } ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0.01 )
 }
 
 [sub_resource type="Animation" id=4]
 resource_name = "AttackRight"
-length = 0.4
+length = 0.18
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -124,55 +142,56 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 24, 25, 26, 27 ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitboxPivot/Melee/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
+"times": PoolRealArray( 0.04, 0.17 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot/Melee/CollisionShape2D:disabled")
+tracks/2/type = "method"
+tracks/2/path = NodePath("StateMachine/Attack")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath("StateMachine/Attack")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.17 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_on_Attack_animation_finished"
 } ]
 }
+tracks/3/type = "audio"
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0.01 )
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "AttackUp"
-length = 0.4
+length = 0.18
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -180,50 +199,50 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 28, 29, 30, 31 ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitboxPivot/Melee/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack_animation_finished"
-} ]
+"times": PoolRealArray( 0.04, 0.17 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot/Melee/CollisionShape2D:disabled")
+tracks/2/type = "method"
+tracks/2/path = NodePath("StateMachine/Attack")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath("StateMachine/Attack")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.17 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_on_Attack_animation_finished"
 } ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0.01 )
 }
 
 [sub_resource type="Animation" id=6]
@@ -554,9 +573,6 @@ graph_offset = Vector2( -395, -168 )
 radius = 10.1005
 height = 12.4599
 
-[sub_resource type="CircleShape2D" id=48]
-radius = 8.33053
-
 [sub_resource type="CapsuleShape2D" id=49]
 radius = 4.99366
 height = 0.0
@@ -598,14 +614,16 @@ push_speed = 20
 script = ExtResource( 10 )
 
 [node name="Hook" type="Node" parent="StateMachine"]
+script = ExtResource( 3 )
+hook_speed = 200
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 60
-frame = 31
+frame = 29
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.589928, 8.49487 )
+position = Vector2( -0.589928, 7.03811 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
@@ -638,6 +656,13 @@ parameters/Run/blend_position = Vector2( 0, 1 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
 
+[node name="HookDetect" type="RayCast2D" parent="HitboxPivot"]
+position = Vector2( 0, 1 )
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 150 )
+collision_mask = 16
+
 [node name="Melee" type="Area2D" parent="HitboxPivot"]
 position = Vector2( 0, 1 )
 collision_layer = 8
@@ -648,17 +673,6 @@ damage = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxPivot/Melee"]
 position = Vector2( 21.1084, -1.67538 )
 shape = SubResource( 47 )
-disabled = true
-
-[node name="Hook" type="Area2D" parent="HitboxPivot"]
-position = Vector2( 0, 1 )
-collision_layer = 0
-collision_mask = 16
-script = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxPivot/Hook"]
-position = Vector2( 61.5225, -0.968277 )
-shape = SubResource( 48 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
 collision_layer = 128
@@ -666,6 +680,9 @@ collision_layer = 128
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -0.589924, 8.49487 )
 shape = SubResource( 49 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="Hurtbox"]

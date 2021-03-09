@@ -9,54 +9,54 @@
 [ext_resource path="res://src/Enemy/PlayerDetection.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Collisions/Hitbox.tscn" type="PackedScene" id=8]
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 16, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 48, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 16, 24 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "animate",
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=7]
 radius = 2.75284
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=8]
 radius = 10.9114
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 7.0036
 height = 7.81828
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 102.186
+[sub_resource type="CircleShape2D" id=10]
+radius = 109.444
 
 [node name="Bat" type="KinematicBody2D"]
-collision_layer = 32
+collision_layer = 2147483680
 collision_mask = 2147483649
 script = ExtResource( 4 )
 effect = ExtResource( 6 )
@@ -68,14 +68,15 @@ max_speed = 100
 max_health = 3
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 2 )
+frames = SubResource( 6 )
 animation = "animate"
+frame = 4
 speed_scale = 2.0
 playing = true
 offset = Vector2( 0, -15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="ShadowSprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -85,21 +86,21 @@ collision_mask = 128
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0.222725, -16.2589 )
-shape = SubResource( 11 )
+shape = SubResource( 8 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
 collision_layer = 64
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -15.3464 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="PlayerDetection" parent="." instance=ExtResource( 7 )]
 modulate = Color( 0.152941, 0.764706, 0.203922, 0.384314 )
 
 [node name="CollisionShape2D" parent="PlayerDetection" index="0"]
 position = Vector2( 0.396851, -13.4929 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 

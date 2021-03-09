@@ -1,1 +1,1 @@
-extends "res://src/Autoload/Stats.gd"
+extends Stats

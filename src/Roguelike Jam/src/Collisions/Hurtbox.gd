@@ -9,7 +9,7 @@ signal invincibility_started
 signal invincibility_ended
 
 
-func set_invincible(value):
+func set_invincible(value) -> void:
 	invincible = value
 	
 	if invincible:

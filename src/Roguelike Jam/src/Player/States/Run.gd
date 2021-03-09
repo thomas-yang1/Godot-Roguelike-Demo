@@ -18,8 +18,9 @@ func physics_process(delta: float) -> void:
 		_state_machine.transition_to("Move/Idle")
 	
 	elif owner.get_slide_count() >0:
-		_state_machine.transition_to("Move/Push")
-
+		if owner.get_slide_collision(0).collider as Box:
+			_state_machine.transition_to("Move/Push")
+		
 	owner.animationState.travel("Run")
 	move.physics_process(delta)
 		
