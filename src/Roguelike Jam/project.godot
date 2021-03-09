@@ -9,10 +9,30 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Box",
+"language": "GDScript",
+"path": "res://src/Object/Box.gd"
+}, {
 "base": "Area2D",
 "class": "Hitbox",
 "language": "GDScript",
 "path": "res://src/Collisions/Hitbox.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/Player/Player.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/Player/States/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://src/Player/States/StateMachine.gd"
 }, {
 "base": "Node",
 "class": "Stats",
@@ -20,24 +40,30 @@ _global_script_classes=[ {
 "path": "res://src/Autoload/Stats.gd"
 } ]
 _global_script_class_icons={
+"Box": "",
 "Hitbox": "",
+"Player": "",
+"State": "",
+"StateMachine": "",
 "Stats": ""
 }
 
 [application]
 
 config/name="Roguelike Jam"
-run/main_scene="res://src/World.tscn"
+run/main_scene="res://src/Level/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 PlayerStats="*res://src/Autoload/PlayerStats.tscn"
+Events="*res://src/Autoload/Events.gd"
 
 [display]
 
 window/size/width=320
 window/size/height=180
+window/size/resizable=false
 window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
@@ -80,6 +106,11 @@ hook={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":75,"unicode":0,"echo":false,"script":null)
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+change_state={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777240,"unicode":0,"echo":false,"script":null)
  ]
 }
 

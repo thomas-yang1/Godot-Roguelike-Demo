@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Player/States/Run.gd" type="Script" id=1]
+[ext_resource path="res://src/Player/States/StateMachine.gd" type="Script" id=2]
+[ext_resource path="res://src/Player/States/Move.gd" type="Script" id=3]
+[ext_resource path="res://src/Player/States/Idle.gd" type="Script" id=4]
+
+[node name="StateMachine" type="Node"]
+script = ExtResource( 2 )
+initial_state = NodePath("Move")
+
+[node name="Move" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Idle" type="Node" parent="Move"]
+script = ExtResource( 4 )
+
+[node name="Run" type="Node" parent="Move"]
+script = ExtResource( 1 )
