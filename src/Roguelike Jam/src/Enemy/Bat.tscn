@@ -57,7 +57,7 @@ radius = 109.444
 
 [node name="Bat" type="KinematicBody2D"]
 collision_layer = 2147483680
-collision_mask = 2147483649
+collision_mask = 2147483648
 script = ExtResource( 4 )
 effect = ExtResource( 6 )
 acceleration = 100
@@ -65,12 +65,11 @@ friction = 100
 max_speed = 100
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
-max_health = 3
+max_health = 1
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "animate"
-frame = 4
 speed_scale = 2.0
 playing = true
 offset = Vector2( 0, -15 )
@@ -82,14 +81,14 @@ shape = SubResource( 7 )
 texture = ExtResource( 2 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 8 )]
-collision_mask = 128
+collision_mask = 2147483776
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0.222725, -16.2589 )
 shape = SubResource( 8 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
-collision_layer = 64
+collision_layer = 2147483712
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -15.3464 )

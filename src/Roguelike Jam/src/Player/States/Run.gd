@@ -21,12 +21,12 @@ func physics_process(delta: float) -> void:
 		if owner.get_slide_collision(0).collider as Box:
 			_state_machine.transition_to("Move/Push")
 		
-	owner.animationState.travel("Run")
 	move.physics_process(delta)
 		
 
 func enter(msg: Dictionary = {}) -> void:
 	get_parent().enter(msg)
+	owner.animationPlayer.play("Run")
 
 
 func exit() -> void:

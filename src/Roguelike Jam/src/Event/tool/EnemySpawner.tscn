@@ -1,0 +1,98 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Event/scripts/EnemySpawner.gd" type="Script" id=1]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TopLeftZone" type="Node2D" parent="." groups=[
+"Zone",
+]]
+
+[node name="Location0" type="Position2D" parent="TopLeftZone"]
+position = Vector2( 26.0406, 25.3058 )
+
+[node name="Location1" type="Position2D" parent="TopLeftZone"]
+position = Vector2( 57.5815, 24.6824 )
+
+[node name="Location2" type="Position2D" parent="TopLeftZone"]
+position = Vector2( 25.9876, 59.3766 )
+
+[node name="Location3" type="Position2D" parent="TopLeftZone"]
+position = Vector2( 60.784, 61.0603 )
+
+[node name="TopRightZone" type="Node2D" parent="." groups=[
+"Zone",
+]]
+position = Vector2( 219.441, 0 )
+
+[node name="Location0" type="Position2D" parent="TopRightZone"]
+position = Vector2( 26.0406, 25.3058 )
+
+[node name="Location1" type="Position2D" parent="TopRightZone"]
+position = Vector2( 57.5815, 24.6824 )
+
+[node name="Location2" type="Position2D" parent="TopRightZone"]
+position = Vector2( 60.784, 61.0603 )
+
+[node name="Location3" type="Position2D" parent="TopRightZone"]
+position = Vector2( 25.9876, 59.3766 )
+
+[node name="BotRightZone" type="Node2D" parent="." groups=[
+"Zone",
+]]
+position = Vector2( 220.564, 92.0419 )
+
+[node name="Location0" type="Position2D" parent="BotRightZone"]
+position = Vector2( 26.0406, 25.3058 )
+
+[node name="Location1" type="Position2D" parent="BotRightZone"]
+position = Vector2( 57.5815, 24.6824 )
+
+[node name="Location2" type="Position2D" parent="BotRightZone"]
+position = Vector2( 60.784, 61.0603 )
+
+[node name="Location3" type="Position2D" parent="BotRightZone"]
+position = Vector2( 25.9876, 59.3766 )
+
+[node name="BotLeftZone" type="Node2D" parent="." groups=[
+"Zone",
+]]
+position = Vector2( 0, 88.1133 )
+
+[node name="Location0" type="Position2D" parent="BotLeftZone" groups=[
+"spawn_location",
+]]
+position = Vector2( 26.0406, 25.3058 )
+
+[node name="Location1" type="Position2D" parent="BotLeftZone" groups=[
+"spawn_location",
+]]
+position = Vector2( 57.5815, 24.6824 )
+
+[node name="Location2" type="Position2D" parent="BotLeftZone" groups=[
+"spawn_location",
+]]
+position = Vector2( 60.784, 61.0603 )
+
+[node name="Location3" type="Position2D" parent="BotLeftZone" groups=[
+"spawn_location",
+]]
+position = Vector2( 25.9876, 59.3766 )
+
+[node name="MiddleZone" type="Node2D" parent="." groups=[
+"Zone",
+]]
+position = Vector2( 108.879, 47.1434 )
+
+[node name="Location0" type="Position2D" parent="MiddleZone"]
+position = Vector2( 26.0406, 25.3058 )
+
+[node name="Location1" type="Position2D" parent="MiddleZone"]
+position = Vector2( 57.5815, 24.6824 )
+
+[node name="Location2" type="Position2D" parent="MiddleZone"]
+position = Vector2( 60.784, 61.0603 )
+
+[node name="Location3" type="Position2D" parent="MiddleZone"]
+position = Vector2( 25.9876, 59.3766 )

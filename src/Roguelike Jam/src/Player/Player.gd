@@ -2,10 +2,11 @@ extends KinematicBody2D
 class_name Player
 
 onready var animationPlayer = $AnimationPlayer
-onready var animationTree = $AnimationTree
-onready var animationState = animationTree.get("parameters/playback")
+onready var audiostream2 = $AudioStreamPlayer2
 
 onready var hitboxPivot = $HitboxPivot
+onready var hitbox = $HitboxPivot/Hitbox
+
 onready var hookDetect = $HitboxPivot/HookDetect
 onready var collision = $CollisionShape2D
 
@@ -13,12 +14,15 @@ onready var stateLabel = $StateLabel
 onready var hurtbox = $Hurtbox
 onready var stats = PlayerStats
 
+onready var sprite = $Sprite
+onready var claw = $Claw
+
 var can_hook = false
 
 
 func _ready() -> void:
-	animationTree.active = true
-	stats.connect("no_health", self, "queue_free")
+	randomize()
+	stats.connect("no_health", self, "_on_Player_died")
 
 
 func _process(_delta: float) -> void:
@@ -29,7 +33,13 @@ func _process(_delta: float) -> void:
 		can_hook = false
 	
 	
-func _on_Hurtbox_area_entered(area):
-	stats.health -= 1
+func _on_Hurtbox_area_entered(_hitbox):
+	stats.health -= _hitbox.damage
 	hurtbox.create_effect()
-	hurtbox.start_invincibility(0.5)
+	audiostream2.play()
+	hurtbox.start_invincibility(1)
+
+
+func _on_Player_died():
+	AudioControl._set_process(false)
+	get_tree().change_scene("res://src/Level/GameOver.tscn")

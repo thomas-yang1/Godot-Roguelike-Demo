@@ -19,7 +19,6 @@ onready var sprite = $Sprite
 onready var hurtbox = $Hurtbox
 
 signal player_detected
-signal player_undetected
 
 
 func _physics_process(delta):
@@ -33,7 +32,8 @@ func _physics_process(delta):
 			
 		WANDER:
 			pass
-			
+
+
 		CHASE:
 			var player = playerDetection.player
 			if player != null:
@@ -64,7 +64,7 @@ func _on_Hurtbox_area_entered(area):
 func _on_Stats_no_health():
 	var effectInstance = effect.instance()
 	effectInstance.position = self.position
-	owner.add_child(effectInstance)
+#	owner.add_child(effectInstance)
 	
 	queue_free()
 

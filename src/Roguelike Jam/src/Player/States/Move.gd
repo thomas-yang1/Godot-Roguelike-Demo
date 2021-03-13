@@ -16,11 +16,11 @@ var velocity := Vector2.ZERO
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		_state_machine.transition_to("Attack")
+		
+	elif event.is_action_pressed("claw"):
+		_state_machine.transition_to("Claw")
 	
-	elif event.is_action_pressed("hook") and owner.can_hook:
-		_state_machine.transition_to("Hook")
 	
-
 # warning-ignore:unused_argument
 func physics_process(delta: float) -> void:
 	velocity = calculate_velocity(velocity, get_move_direction())
@@ -52,7 +52,6 @@ func calculate_velocity(old_velocity: Vector2, get_move_direction: Vector2) -> V
 	
 	if move_direction != Vector2.ZERO:
 		new_velocity = new_velocity.move_toward(get_move_direction * max_speed, acceleration)
-		calculate_animation_tree()
 		calculate_hitbox_pivot()
 	
 	return new_velocity
@@ -66,23 +65,19 @@ func get_move_direction() -> Vector2:
 	return move_direction.normalized()
 
 
-func calculate_animation_tree():
-	owner.animationTree.set("parameters/Idle/blend_position", move_direction)		
-	owner.animationTree.set("parameters/Run/blend_position", move_direction)
-	owner.animationTree.set("parameters/Attack/blend_position", move_direction)
-
-
 func calculate_hitbox_pivot():
-	var hitbox = owner.hitboxPivot
+	var hitboxPivot = owner.hitboxPivot
+	var hitbox = owner.hitbox
+	var sprite = owner.sprite
 	match move_direction:
-		Vector2.UP:
-			hitbox.rotation_degrees = -90
-
-		Vector2.DOWN:
-			hitbox.rotation_degrees = 90
-
 		Vector2.LEFT:
-			hitbox.rotation_degrees = 180
+			sprite.scale.x = -1
+			owner.claw.scale.x = -1
+			hitboxPivot.rotation_degrees = 180
+			hitbox.knockback_vector = Vector2.LEFT
 
 		Vector2.RIGHT:
-			hitbox.rotation_degrees = 0
+			sprite.scale.x = 1
+			owner.claw.scale.x = 1
+			hitboxPivot.rotation_degrees = 0
+			hitbox.knockback_vector = Vector2.RIGHT

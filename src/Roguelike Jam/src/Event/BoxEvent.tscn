@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Object/Box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Event/scripts/BoxEvent.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0.883209, 1.1665 )
+
+[node name="BoxEvent" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BoxTarget" type="Area2D" parent="."]
+modulate = Color( 0.643137, 0.188235, 0.188235, 1 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="Sprite" type="Sprite" parent="BoxTarget"]
+modulate = Color( 1, 1, 1, 0.584314 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="BoxTarget"]
+modulate = Color( 0.27451, 0.694118, 0.172549, 1 )
+shape = SubResource( 1 )
+
+[node name="BoxTarget2" type="Area2D" parent="."]
+modulate = Color( 0.643137, 0.188235, 0.188235, 1 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="Sprite" type="Sprite" parent="BoxTarget2"]
+modulate = Color( 1, 1, 1, 0.584314 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="BoxTarget2"]
+modulate = Color( 0.27451, 0.694118, 0.172549, 1 )
+shape = SubResource( 1 )
+
+[node name="Box" parent="." instance=ExtResource( 1 )]
+
+[node name="Box2" parent="." instance=ExtResource( 1 )]
+[connection signal="body_entered" from="BoxTarget" to="." method="_on_BoxTarget_body_entered"]
+[connection signal="body_exited" from="BoxTarget" to="." method="_on_BoxTarget_body_exited"]
+[connection signal="body_entered" from="BoxTarget2" to="." method="_on_BoxTarget_body_entered"]
+[connection signal="body_exited" from="BoxTarget2" to="." method="_on_BoxTarget_body_exited"]

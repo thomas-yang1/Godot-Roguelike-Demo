@@ -16,7 +16,7 @@ func set_invincible(value) -> void:
 		emit_signal("invincibility_started")
 		
 	else:
-		emit_signal("invincibility_started")
+		emit_signal("invincibility_ended")
 
 
 func start_invincibility(duration):

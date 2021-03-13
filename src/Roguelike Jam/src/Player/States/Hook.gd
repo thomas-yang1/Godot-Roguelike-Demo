@@ -1,29 +1,26 @@
 # Hook state
 extends State
 
-export var hook_speed := 50
 var velocity = Vector2.ZERO
+var claw :Node2D
 
-# warning-ignore:unused_argument
+
 func physics_process(delta) -> void:
+	if claw != null:
+		if claw.has_interrupted and not claw.has_finished:
+			owner.move_and_slide(Vector2(claw.scale.x, 0) * 220)
+			
+		elif claw.has_finished:
+			claw.has_finished = false
+			_state_machine.transition_to("Move/Run")
 	
-	var direction = owner.global_position.direction_to(owner.hookDetect.get_collision_point())
-	velocity = direction * hook_speed
-	velocity = owner.move_and_slide(velocity)
-		
-	if owner.get_slide_count() >0:
-		Events.emit_signal("player_moved", owner)
-		_state_machine.transition_to("Move/Idle")
-		
-
+	
 # warning-ignore:unused_argument
-func enter(msg: Dictionary = {}) -> void:	
-#	owner.collision.set_deferred("disabled", true)
-	return
+func enter(msg: Dictionary = {}) -> void:
+	owner.animationPlayer.play("Idle")
+	claw = owner.claw
+	claw.set_process(true)
+
 
 func exit() -> void:
-#	owner.collision.set_deferred("disabled", false)
 	return
-	
-func _on_Attack_animation_finished() -> void:
-	_state_machine.transition_to("Move/Idle")

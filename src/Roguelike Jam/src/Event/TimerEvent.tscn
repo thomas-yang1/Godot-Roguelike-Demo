@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Event/scripts/TimerEvent.gd" type="Script" id=1]
+[ext_resource path="res://src/Event/tool/EnemySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Enemy/Bat.tscn" type="PackedScene" id=3]
+
+[node name="TimerEvent" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+enemy = ExtResource( 3 )
+
+[node name="GateUnlockTimer" type="Timer" parent="." index="0"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="EnemySpawnTimer" type="Timer" parent="." index="1"]
+wait_time = 2.0
+autostart = true
+
+[node name="Panel" type="Panel" parent="." index="2"]
+margin_left = 224.93
+margin_top = 2.82162
+margin_right = 293.93
+margin_bottom = 24.8216
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="." index="3"]
+margin_left = 233.103
+margin_top = 7.00002
+margin_right = 288.103
+margin_bottom = 21.0
+text = "Test 123"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="GateUnlockTimer" to="." method="_on_GateUnlockTimer_timeout"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
