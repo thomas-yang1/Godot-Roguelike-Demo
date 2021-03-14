@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/7DRL_Tileset.png-7b6c75657af056becc70bc035ad32775.stex"
+path="res://.import/7DRL_Orc.png-2871c807dad72e9632ae1690720f4521.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprites/7DRL_Tileset.png"
-dest_files=[ "res://.import/7DRL_Tileset.png-7b6c75657af056becc70bc035ad32775.stex" ]
+source_file="res://asset/sprites/enemy/7DRL_Orc.png"
+dest_files=[ "res://.import/7DRL_Orc.png-2871c807dad72e9632ae1690720f4521.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

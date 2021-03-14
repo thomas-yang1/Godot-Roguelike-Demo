@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Orc_Cry.wav-2f33534cd17b4071133f4fb3ba42a34d.sample"
+
+[deps]
+
+source_file="res://asset/audio/enemy/Orc_Cry.wav"
+dest_files=[ "res://.import/Orc_Cry.wav-2f33534cd17b4071133f4fb3ba42a34d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

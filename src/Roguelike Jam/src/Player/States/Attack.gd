@@ -24,8 +24,8 @@ func exit() -> void:
 	return
 	
 
-func set_can_move():
-	can_move = true
+func set_can_move(value: bool):
+	can_move = value
 
 
 func get_move_direction() -> Vector2:

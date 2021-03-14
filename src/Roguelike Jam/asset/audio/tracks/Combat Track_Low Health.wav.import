@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Combat Track_Low Health.wav-a8dfd172602b3932c3b574afecd4a67d.sample"
+
+[deps]
+
+source_file="res://asset/audio/tracks/Combat Track_Low Health.wav"
+dest_files=[ "res://.import/Combat Track_Low Health.wav-a8dfd172602b3932c3b574afecd4a67d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

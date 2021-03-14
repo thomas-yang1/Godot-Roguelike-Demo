@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/Event/scripts/TimerEvent.gd" type="Script" id=1]
 [ext_resource path="res://src/Event/tool/EnemySpawner.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/Enemy/Bat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Enemy/SpiderEnemy.tscn" type="PackedScene" id=3]
 
 [node name="TimerEvent" instance=ExtResource( 2 )]
 script = ExtResource( 1 )

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Punishing_Sound.wav-0bf0a92cdad18e6f07df5ce66d37ccfd.sample"
+
+[deps]
+
+source_file="res://asset/audio/Others/Punishing_Sound.wav"
+dest_files=[ "res://.import/Punishing_Sound.wav-0bf0a92cdad18e6f07df5ce66d37ccfd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

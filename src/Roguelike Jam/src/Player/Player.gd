@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name Player
 
 onready var animationPlayer = $AnimationPlayer
+onready var audio = $AudioStreamPlayer
 onready var audiostream2 = $AudioStreamPlayer2
 
 onready var hitboxPivot = $HitboxPivot
@@ -15,8 +16,14 @@ onready var hurtbox = $Hurtbox
 onready var stats = PlayerStats
 
 onready var sprite = $Sprite
-onready var claw = $Claw
+onready var claw = $HitboxPivot/Claw
 
+export var chain_sound :AudioStream
+export var chain_hit_sound :AudioStream
+export var box_push_sound :AudioStream
+
+
+var player_direction := Vector2.RIGHT
 var can_hook = false
 
 
@@ -41,5 +48,4 @@ func _on_Hurtbox_area_entered(_hitbox):
 
 
 func _on_Player_died():
-	AudioControl._set_process(false)
-	get_tree().change_scene("res://src/Level/GameOver.tscn")
+	pass

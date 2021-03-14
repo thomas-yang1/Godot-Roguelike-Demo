@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Reward_Sound.wav-2b3ebc820c4e75d57ea5ed515fc5c3ca.sample"
+
+[deps]
+
+source_file="res://asset/audio/Others/Reward_Sound.wav"
+dest_files=[ "res://.import/Reward_Sound.wav-2b3ebc820c4e75d57ea5ed515fc5c3ca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

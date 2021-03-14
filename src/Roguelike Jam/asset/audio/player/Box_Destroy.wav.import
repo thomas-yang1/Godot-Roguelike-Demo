@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Box_Destroy.wav-51b58ab41c67cb56250d4d48328bdc8e.sample"
+
+[deps]
+
+source_file="res://asset/audio/player/Box_Destroy.wav"
+dest_files=[ "res://.import/Box_Destroy.wav-51b58ab41c67cb56250d4d48328bdc8e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

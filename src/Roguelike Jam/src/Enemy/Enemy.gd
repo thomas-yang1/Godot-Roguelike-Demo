@@ -10,10 +10,15 @@ export var friction = 10
 export var max_speed = 50
 export var knockback_force := 30
 
+
+export var cry :AudioStream
+export var die :AudioStream
+export var hurt :AudioStream
+
 var knockback = Vector2.ZERO
 var velocity = Vector2.ZERO
 
-enum {IDLE, WANDER, CHASE}
+enum {IDLE, WANDER, CHASE, ATTACK}
 var state
 
 onready var playerDetection = $PlayerDetection
@@ -23,7 +28,7 @@ onready var animationPlayer = $AnimationPlayer
 onready var hurtAnim = $HurtAnimationPlayer
 onready var softCollision = $SoftCollision
 onready var wanderController = $WanderController
-	
+onready var audio = $AudioStreamPlayer
 	
 func has_player() -> bool:
 	if playerDetection.can_see_player():
@@ -42,9 +47,12 @@ func _on_Hurtbox_area_entered(hitbox):
 
 
 func _on_Stats_no_health():
-	var deathEffectInstance = deathEffect.instance()
-	deathEffectInstance.position = self.position
-	owner.add_child(deathEffectInstance)
+	audio.stream = die
+	audio.play()
+	yield(audio, "finished")
+#	var deathEffectInstance = deathEffect.instance()
+#	deathEffectInstance.position = self.position
+#	owner.add_child(deathEffectInstance)
 	queue_free()
 
 

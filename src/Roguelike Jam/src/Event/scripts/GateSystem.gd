@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+onready var audio = $AudioStreamPlayer
 #export var level :PackedScene setget set_level
 
 var levels = [
@@ -8,12 +9,8 @@ var levels = [
 	"res://src/Level/BoxLevel.tscn"]
 	
 
-#func set_level(value) -> void:
-#	var instanced = value.instance()
-#	add_child(instanced)
-	
-
 func _on_Unlock_gate() -> void:
+	audio.play()
 	set_gate_unlocked()
 	
 
@@ -27,7 +24,6 @@ func set_gate_unlocked() -> void:
 func _on_Exit_body_entered(_body) -> void:
 # warning-ignore:return_value_discarded
 	get_tree().change_scene(levels[get_random_level()])
-
 
 
 func get_random_level() -> int:

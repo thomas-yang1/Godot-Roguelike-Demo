@@ -1,9 +1,112 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Autoload/AudioControl.gd" type="Script" id=1]
-[ext_resource path="res://asset/audio/Dark Main Theme v2.0.wav" type="AudioStream" id=3]
+[ext_resource path="res://asset/audio/tracks/Dark Main Theme Low Health.wav" type="AudioStream" id=2]
+[ext_resource path="res://asset/audio/tracks/Dark Main Theme v2.0.wav" type="AudioStream" id=3]
+[ext_resource path="res://asset/audio/tracks/Combat Track V2.wav" type="AudioStream" id=4]
+[ext_resource path="res://asset/audio/tracks/Combat Track_Low Health.wav" type="AudioStream" id=5]
+[ext_resource path="res://asset/audio/tracks/End Game Piano.wav" type="AudioStream" id=6]
 
-[node name="AudioControl" type="AudioStreamPlayer"]
-stream = ExtResource( 3 )
-autoplay = true
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "FadeToTrack1"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Theme_1:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.217637, 0.183011 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Theme_2:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 6.06287, 3.86374 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Theme_2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "FadeToTrack2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Theme_1:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 5.65685, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Theme_2:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.258817, 4.02683e-05 ),
+"update": 3,
+"values": [ -80.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Theme_1:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="BackgroundMusic" type="Node"]
 script = ExtResource( 1 )
+theme_normal = ExtResource( 3 )
+theme_low = ExtResource( 2 )
+combat_normal = ExtResource( 4 )
+combat_low = ExtResource( 5 )
+death_normal = ExtResource( 6 )
+
+[node name="Theme_1" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
+
+[node name="Theme_2" type="AudioStreamPlayer" parent="."]
+
+[node name="Combat_1" type="AudioStreamPlayer" parent="."]
+
+[node name="Combat_2" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FadeToTrack1 = SubResource( 1 )
+anims/FadeToTrack2 = SubResource( 2 )

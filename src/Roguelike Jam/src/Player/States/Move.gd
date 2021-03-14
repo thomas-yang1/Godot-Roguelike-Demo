@@ -72,12 +72,12 @@ func calculate_hitbox_pivot():
 	match move_direction:
 		Vector2.LEFT:
 			sprite.scale.x = -1
-			owner.claw.scale.x = -1
-			hitboxPivot.rotation_degrees = 180
+			hitboxPivot.scale.x = -1
+			owner.player_direction = Vector2.LEFT
 			hitbox.knockback_vector = Vector2.LEFT
 
 		Vector2.RIGHT:
 			sprite.scale.x = 1
-			owner.claw.scale.x = 1
-			hitboxPivot.rotation_degrees = 0
+			hitboxPivot.scale.x = 1
+			owner.player_direction = Vector2.RIGHT
 			hitbox.knockback_vector = Vector2.RIGHT

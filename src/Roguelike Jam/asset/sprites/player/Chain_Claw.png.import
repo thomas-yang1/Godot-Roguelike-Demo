@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/7DRL_Orc.png-26b357a7d30e6c01a6e53c7accb9b0eb.stex"
+path="res://.import/Chain_Claw.png-1c3ef26db13b443579c70a5870a7e691.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprites/7DRL_Orc.png"
-dest_files=[ "res://.import/7DRL_Orc.png-26b357a7d30e6c01a6e53c7accb9b0eb.stex" ]
+source_file="res://asset/sprites/player/Chain_Claw.png"
+dest_files=[ "res://.import/Chain_Claw.png-1c3ef26db13b443579c70a5870a7e691.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

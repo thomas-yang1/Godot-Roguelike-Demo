@@ -3,7 +3,9 @@ extends Enemy
 
 func _ready() -> void:
 	state = WANDER
-
+	audio.stream = cry
+	audio.play()
+	
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, friction * delta)

@@ -2,7 +2,7 @@ extends Node
 class_name Stats
 
 export var max_health :int = 5 setget set_max_health
-var health :int setget set_health
+var health :int = max_health setget set_health
 
 signal no_health
 signal health_changed(value)

@@ -9,6 +9,7 @@ func _on_BoxTarget_body_entered(body):
 		return
 		
 	current_box += 1
+	
 	if current_box >= box_required:
 		emit_signal("unlock")
 

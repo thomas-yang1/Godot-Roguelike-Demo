@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Dark Main Theme Low Health.wav-ce5209be7e217818adc7d8afd9f2e618.sample"
+
+[deps]
+
+source_file="res://asset/audio/tracks/Dark Main Theme Low Health.wav"
+dest_files=[ "res://.import/Dark Main Theme Low Health.wav-ce5209be7e217818adc7d8afd9f2e618.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

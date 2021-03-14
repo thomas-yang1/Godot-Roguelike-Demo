@@ -14,8 +14,10 @@ func physics_process(delta: float) -> void:
 	
 	if owner.get_slide_count() >= 1:
 		check_box_collision(move.move_direction)
+		owner.animationPlayer.play("Push")
 	
 	else:
+		owner.animationPlayer.stop()
 		_state_machine.transition_to("Move/Idle")
 		
 	move.physics_process(delta)
@@ -40,4 +42,3 @@ func exit() -> void:
 	var move = get_parent()
 	move.max_speed = move.max_speed_default
 	move.exit()
-
